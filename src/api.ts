@@ -1,11 +1,20 @@
-import { config } from 'https://deno.land/x/dotenv/mod.ts';
+import { config } from "https://deno.land/x/dotenv/mod.ts";
 
-const env = config();
-console.log(env.API_KEY);
-console.log(env.API_URL);
+async function synonymList(word: string): Promise<string[]> {
+  const env = config();
+  const url = `${env.API_URL}${word}?key=${env.API_KEY}`;
+  const strength = 3;
 
-const word = "good"
-const url = `${env.API_URL}${word}?key=${env.API_KEY}`
-const resp = await fetch(url)
-const data = await resp.json()
-console.log(data)
+  const resp = await fetch(url);
+  const data = await resp.json();
+  const syns = data[0].meta.syns;
+
+  return syns.reduce(
+    (total: string[], list: string[], i: number) =>
+      i < strength && list[i] ? total.concat(list) : total,
+    [],
+  );
+}
+
+const result = await synonymList("parrot");
+console.log(result);
