@@ -17,11 +17,11 @@ async function synonymList(word: string): Promise<string[]> {
 export async function goodSynonym(word: string): Promise<string> {
   const synList = await synonymList(word);
   const list = synList.filter((word) => isGood(word));
-  return list[Math.floor(Math.random() * list.length)];
+  return list ? list[Math.floor(Math.random() * list.length)] : "good example";
 }
 
 export async function badSynonym(word: string): Promise<string> {
   const synList = await synonymList(word);
   const list = synList.filter((word) => !isGood(word));
-  return list[Math.floor(Math.random() * list.length)];
+  return list ? list[Math.floor(Math.random() * list.length)] : "bad example";
 }
