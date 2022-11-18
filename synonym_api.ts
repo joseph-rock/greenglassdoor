@@ -1,6 +1,7 @@
 import { config } from "./deps.ts";
 import { isGood } from "./green_glass_door.ts";
 
+// TODO: Needs error handling for words that do not exist
 async function synonymList(word: string): Promise<string[]> {
   const env = config();
   const url = `${env.API_URL}${word}?key=${env.API_KEY}`;
@@ -14,6 +15,7 @@ async function synonymList(word: string): Promise<string[]> {
   );
 }
 
+// TODO: Make these functions better
 export async function goodSynonym(word: string): Promise<string> {
   const synList = await synonymList(word);
   const list = synList.filter((word) => isGood(word));
