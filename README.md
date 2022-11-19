@@ -6,7 +6,7 @@ which words or objects are allowed to pass through the "Green Glass Door".
 This program is designed to: 
 - Take input 
 - Determine if the word can pass through the door
-- Utilizes the 
+- Utilize the 
 [Merriam Webster Thesaurus](https://www.merriam-webster.com/thesaurus) to generate a synonym to contrast the input.
 
 > Example:  
