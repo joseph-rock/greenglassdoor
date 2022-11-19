@@ -1,4 +1,4 @@
-import { synonymList } from "./synonym_api.ts";
+import { synonymList } from "./thesaurus_api.ts";
 
 interface Synonyms {
   good: string[];
