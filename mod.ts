@@ -1,6 +1,7 @@
 import { badSynonym, goodSynonym, isGood } from "./utils.ts";
 
-async function main(word: string) {
+async function main() {
+  const word = Deno.args[0];
   if (isGood(word)) {
     const syn = await badSynonym(word);
     console.log(`${word} is good, ${syn} is bad.`);
@@ -10,4 +11,4 @@ async function main(word: string) {
   }
 }
 
-main("word");
+main();
