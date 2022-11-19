@@ -1,5 +1,4 @@
-import { isGood } from "./green_glass_door.ts";
-import { badSynonym, goodSynonym } from "./synonym_api.ts";
+import { badSynonym, goodSynonym, isGood } from "./utils.ts";
 
 async function main(word: string) {
   if (isGood(word)) {
@@ -11,4 +10,4 @@ async function main(word: string) {
   }
 }
 
-main("poppy");
+main("word");
