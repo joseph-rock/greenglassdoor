@@ -1,7 +1,7 @@
 # Green Glass Door
 
 [Green Glass Door](https://en-academic.com/dic.nsf/enwiki/11627647) is a common word game that determines 
-which words or objects are allowed to pass through the "Green Glass Door".
+if an object, word, or idea can pass through the "Green Glass Door".
 
 This program is designed to: 
 - Take input 
