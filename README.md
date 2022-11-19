@@ -7,7 +7,7 @@ This program is designed to:
 - Take input 
 - Determine if the word can pass through the door
 - Utilize the 
-[Merriam Webster Thesaurus](https://www.merriam-webster.com/thesaurus) to generate a synonym to contrast the input.
+[Merriam Webster Thesaurus API](https://dictionaryapi.com/products/api-collegiate-thesaurus) to generate a synonym to contrast the input.
 
 > Example:  
 >  
