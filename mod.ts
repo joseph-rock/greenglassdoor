@@ -13,14 +13,14 @@ async function synonyms(word: string): Promise<string[]> {
 
 async function goodSyns(word: string): Promise<string> {
   return await synonyms(word)
-    .then((syn) => syn.filter((word) => passesDoor(word)))
+    .then((syns) => syns.filter((word) => passesDoor(word)))
     .then((goodList) => randomElement(goodList)) ||
     "good";
 }
 
 async function badSyns(word: string): Promise<string> {
   return await synonyms(word)
-    .then((syn) => syn.filter((word) => !passesDoor(word)))
+    .then((syns) => syns.filter((word) => !passesDoor(word)))
     .then((badList) => randomElement(badList)) ||
     "bad";
 }
