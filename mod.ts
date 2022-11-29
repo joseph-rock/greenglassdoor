@@ -8,7 +8,8 @@ async function synonyms(word: string): Promise<string[]> {
           total.concat(synList.meta.syns.flat()),
         [],
       )
-    );
+    )
+    .catch(() => []);
 }
 
 async function goodSyns(word: string): Promise<string> {
@@ -39,7 +40,10 @@ function passesDoor(word: string): boolean {
 }
 
 async function main() {
-  const word = Deno.args[0];
+  const word = Deno.args[0]
+    ? Deno.args[0]
+    : randomElement(["forgot", "args", "dummy"]);
+
   if (passesDoor(word)) {
     const syn = await badSyns(word);
     console.log(`${word} is good, ${syn} is bad.`);
