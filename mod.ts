@@ -1,6 +1,6 @@
 import { lookupWord } from "./thesaurus_api.ts";
 
-async function syns(word: string): Promise<string[]> {
+async function synonyms(word: string): Promise<string[]> {
   return await lookupWord(word)
     .then((value) =>
       value.reduce(
@@ -11,15 +11,15 @@ async function syns(word: string): Promise<string[]> {
     );
 }
 
-async function goodSynonym(word: string): Promise<string> {
-  return await syns(word)
+async function goodSyns(word: string): Promise<string> {
+  return await synonyms(word)
     .then((syn) => syn.filter((word) => passesDoor(word)))
     .then((goodList) => randomElement(goodList)) ||
     "good";
 }
 
-async function badSynonym(word: string): Promise<string> {
-  return await syns(word)
+async function badSyns(word: string): Promise<string> {
+  return await synonyms(word)
     .then((syn) => syn.filter((word) => !passesDoor(word)))
     .then((badList) => randomElement(badList)) ||
     "bad";
@@ -41,10 +41,10 @@ function passesDoor(word: string): boolean {
 async function main() {
   const word = Deno.args[0];
   if (passesDoor(word)) {
-    const syn = await badSynonym(word);
+    const syn = await badSyns(word);
     console.log(`${word} is good, ${syn} is bad.`);
   } else {
-    const syn = await goodSynonym(word);
+    const syn = await goodSyns(word);
     console.log(`${word} is bad, ${syn} is good.`);
   }
 }
